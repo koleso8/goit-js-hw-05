@@ -1,48 +1,19 @@
-const getTotalBalanceByGender = (users, gender) =>
-  users
-    .filter(user => user.gender === gender)
-    .reduce((total, client) => {
-      return (total += client.balance);
-    }, 0);
+// [2, 4, 0, 100, 4, 11, 2602, 36] -->  11 (the only odd number)
 
-const clients = [
-  {
-    name: 'Moore Hensley',
-    gender: 'male',
-    balance: 2811,
-  },
-  {
-    name: 'Sharlene Bush',
-    gender: 'female',
-    balance: 3821,
-  },
-  {
-    name: 'Ross Vazquez',
-    gender: 'male',
-    balance: 3793,
-  },
-  {
-    name: 'Elma Head',
-    gender: 'female',
-    balance: 2278,
-  },
-  {
-    name: 'Carey Barr',
-    gender: 'male',
-    balance: 3951,
-  },
-  {
-    name: 'Blackburn Dotson',
-    gender: 'male',
-    balance: 1498,
-  },
-  {
-    name: 'Sheree Anthony',
-    gender: 'female',
-    balance: 2764,
-  },
-];
+// [160, 3, 1719, 19, 11, 13, -21]-- > 160(the only even number)
 
-console.log(getTotalBalanceByGender(clients, 'male')); // 12053
+function findOutlier(integers) {
+  let odd = [];
+  let even = [];
+  for (let i = 0; i < integers.length; i++) {
+    if (integers[i] % 2 !== 0) {
+      odd.push(integers[i]);
+    } else {
+      even.push(integers[i]);
+    }
+  }
+  if (odd.length < even.length) return `${odd}`;
+  return `${even}`;
+}
 
-console.log(getTotalBalanceByGender(clients, 'female')); // 8863
+console.log(findOutlier([2, 6, 8, 10, 3]));
